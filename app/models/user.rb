@@ -24,4 +24,6 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+
+  belongs_to :user_level, :foreign_key => "level", :class_name =>  "UserLevel"
 end

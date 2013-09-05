@@ -1,7 +1,9 @@
 Mar::Application.routes.draw do
   get "home/index"
   devise_for :users
-  resources :users
+  resources :users do
+    post :level_up
+  end
 
   root to: "home#index"
 

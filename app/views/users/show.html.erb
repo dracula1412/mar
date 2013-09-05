@@ -2,7 +2,16 @@
 
 <p>
   <b>Usename:</b>
-  <%= @user.usename %>
+  <%= @user.username %>
+</p>
+<p>
+<b>Current Level:</b>
+<%= @user.level %>
+</p>
+<p>
+<% if current_user && current_user == @user %>
+  <%= link_to 'Level Up', user_level_up_path(@user), method: :post%>
+<% end %>
 </p>
 
 

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
+
   # GET /users
   # GET /users.json
   def index
@@ -79,5 +81,17 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def level_up
+    @user = User.find(params[:user_id])
+    redirect_to current_user if current_user != @user
+    if @user.level < LEVEL_USER_MAX
+      @user.level += 1
+      flash = @user.save! ? 'Congratulation, Level Up !!' : 'Error !!'
+    else
+      flash = 'Sorry, you are max level.'
+    end
+    redirect_to user_path(@user), notice: flash
   end
 end
