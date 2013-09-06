@@ -1,0 +1,5 @@
+%div{style: "margin-top:150px;"}
+  = link_to "Sign out", destroy_user_session_path, :method => :delete if current_user
+  - if !current_user
+    %p= link_to "Sign in", new_user_session_path
+    %p= link_to "Sign up", new_user_registration_path

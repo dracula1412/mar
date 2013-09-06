@@ -6,8 +6,15 @@
   %b Current Level:
   = @user.level
 %p
+  %b Gold
+  = @user.gold
+%p
+  %b Fuel 
+  = @user.fuel
+%p
+  %b Doraemon
+  = @user.doraemon
+
+%p
   - if current_user && current_user == @user
     = link_to 'Level Up', user_level_up_path(@user), method: :post
-= link_to 'Edit', edit_user_path(@user)
-|
-\#{link_to 'Back', users_path}

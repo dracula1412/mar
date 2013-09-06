@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904041009) do
+ActiveRecord::Schema.define(:version => 20130906043231) do
 
   create_table "user_levels", :force => true do |t|
     t.string   "description"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(:version => 20130904041009) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(:version => 20130904041009) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "level"
+    t.integer  "gold",                   :default => 10000
+    t.integer  "fuel",                   :default => 1000
+    t.integer  "doraemon",               :default => 50
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
