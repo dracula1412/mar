@@ -58,5 +58,11 @@ module Mar
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Registerting observers
+    full_names = Dir["#{Rails.root}/app/observers/*.rb"]
+    config.active_record.observers = full_names.collect do |full_name|
+      File.basename(full_name,'.rb').to_sym
+    end
   end
 end
