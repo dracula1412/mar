@@ -1,0 +1,18 @@
+- type = @car.type.split(':').last.downcase
+%p
+  %b
+    = "This is #{type} car"
+
+- if @car.ended_at && @car.ended_at < Time.now
+  %p 
+    This car is working !!
+    %br
+    = "Time to done: #{@car.ended_at}"
+- else
+  %p
+    This car is rest.
+    %br
+    - if type == 'worker'
+      = link_to "Go to work", "#"
+    - else
+      = link_to "Go to raise", "#"

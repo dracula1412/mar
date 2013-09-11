@@ -5,6 +5,10 @@ Mar::Application.routes.draw do
     post :level_up
   end
 
+  resources :cars do
+  end
+  match '/my_cars', :to => 'cars#index'
+
   root to: "home#index"
 
   # The priority is based upon order of creation:

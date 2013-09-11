@@ -1,3 +1,4 @@
+- my_user = current_user && current_user == @user
 %p#notice= notice
 %p
   %b Usename:
@@ -11,10 +12,11 @@
 %p
   %b Fuel 
   = @user.fuel
+
 %p
   %b Doraemon
   = @user.doraemon
 
 %p
-  - if current_user && current_user == @user
+  - if my_user && @user.level < LEVEL_USER_MAX
     = link_to 'Level Up', user_level_up_path(@user), method: :post

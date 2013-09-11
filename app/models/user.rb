@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   end
 
   belongs_to :user_level, :foreign_key => "level", :class_name =>  "UserLevel"
+  has_many :cars
+  has_many :worker_cars, :class_name => 'Car::Worker'
+  has_many :normal_cars, :class_name => 'Car::Normal'
+  has_many :special_cars, :class_name => 'Car::Special'
 end

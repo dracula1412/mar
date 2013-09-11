@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906043231) do
+ActiveRecord::Schema.define(:version => 20130906063653) do
+
+  create_table "cars", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "user_levels", :force => true do |t|
     t.string   "description"
@@ -33,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20130906043231) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "level"
+    t.integer  "level",                  :default => 1
     t.integer  "gold",                   :default => 10000
     t.integer  "fuel",                   :default => 1000
     t.integer  "doraemon",               :default => 50
