@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
+
+# Debugger
 gem 'pry'
+
+# Config
+gem 'rails_config'
 
 gem 'rails', '3.2.13'
 gem 'therubyracer'

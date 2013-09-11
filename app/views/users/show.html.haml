@@ -18,5 +18,5 @@
   = @user.doraemon
 
 %p
-  - if my_user && @user.level < LEVEL_USER_MAX
+  - if my_user && @user.level < Settings.level_max 
     = link_to 'Level Up', user_level_up_path(@user), method: :post
