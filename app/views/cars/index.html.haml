@@ -3,18 +3,18 @@
     = "Worker car: #{@worker_cars.count}"
 - if @worker_cars.count > 0
   - @worker_cars.each do |car|
-    - if car.ended_at && car.ended_at < Time.now
+    - if car.ended_at && car.ended_at > Time.now
       %p
         = link_to "Car #{car.id}", car_path(car)
         is working !!
         %br
-        = "Time to done: #{car.ended_at}"
+        = "Time to done: #{time_ago_in_words(car.ended_at)}"
     - else
       %p
         = link_to "Car #{car.id}", car_path(car)
         = "Car #{car.id} is rest."
         %br
-        = link_to "Go to work", "#"
+        = link_to "Go to work", go_to_work_car_path(car), method: :post 
 
 %p
   %b 

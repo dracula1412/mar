@@ -6,6 +6,9 @@ Mar::Application.routes.draw do
   end
 
   resources :cars do
+    member do
+      post :go_to_work
+    end
   end
   match '/my_cars', :to => 'cars#index'
 

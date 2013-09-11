@@ -3,16 +3,16 @@
   %b
     = "This is #{type} car"
 
-- if @car.ended_at && @car.ended_at < Time.now
+- if @car.ended_at && @car.ended_at > Time.now
   %p 
     This car is working !!
     %br
-    = "Time to done: #{@car.ended_at}"
+    = "Time to done: #{time_ago_in_words(@car.ended_at)}"
 - else
   %p
     This car is rest.
     %br
     - if type == 'worker'
-      = link_to "Go to work", "#"
+      = link_to "Go to work", go_to_work_car_path(@car), method: :post 
     - else
       = link_to "Go to raise", "#"
