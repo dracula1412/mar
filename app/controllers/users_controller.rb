@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   def level_up
     @user = User.find(params[:user_id])
     redirect_to current_user if current_user != @user
-    if @user.level < LEVEL_USER_MAX
+    if @user.level < Settings.level_max 
       @user.level += 1
       flash = @user.save! ? 'Congratulation, Level Up !!' : 'Error !!'
     else
