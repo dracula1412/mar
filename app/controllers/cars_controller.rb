@@ -14,18 +14,34 @@ class CarsController < ApplicationController
   def go_to_work
     now = Time.now
     if (@car.class != Car::Worker) || (@car.ended_at && @car.ended_at > now)
-      notice = "This car can't go to work"
+      flash = "This car can't go to work"
     else
       @car.started_at = now
       @car.ended_at = now + Settings.time_to_work.minutes
       if @car.save!
-        notice = "This car is going to work !!"
-        user = @car.user.increment!(:fuel,Settings.default_fuel)
+        flash = "This car is going to work !!"
+        @car.user.increment!(:fuel,Settings.default_fuel)
       else
-        notice = "This car can't go to work"
+        flash = "This car can't go to work"
       end
     end
-    redirect_to car_path(@car), notice: notice
+    redirect_to car_path(@car), notice: flash
+  end
+
+  def speed_up_worker
+    now = Time.now
+    if (@car.class != Car::Worker) || (@car.ended_at && @car.ended_at < now) || (@car.user.doraemon < Settings.default_speed_up)
+      flash = "Can not speed up"
+    else
+      @car.ended_at = now
+      if @car.save!
+        flash = "Speed up. This car'll become rest."
+        @car.user.decrement!(:doraemon,Settings.default_speed_up)
+      else
+        flash = "Can not speed up"
+      end
+    end
+    redirect_to car_path(@car), notice: flash
   end
 
   private

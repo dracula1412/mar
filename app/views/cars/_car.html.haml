@@ -1,0 +1,18 @@
+- type = car.type.split(':').last.downcase
+- if car.ended_at && car.ended_at > Time.now
+  %p
+    = link_to "Car #{car.id}", car_path(car)
+    is working !!
+    %br
+    = "Time to done: #{time_ago_in_words(car.ended_at)}"
+    %br
+    = link_to "Speed up", speed_up_worker_car_path(car), method: :post
+- else
+  %p
+    = link_to "Car #{car.id}", car_path(car)
+    = "Car #{car.id} is rest."
+    %br
+    - if type == 'worker'
+      = link_to "Go to work", go_to_work_car_path(car), method: :post 
+    - else
+      = link_to "Go to raise", "#"
