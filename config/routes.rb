@@ -13,6 +13,8 @@ Mar::Application.routes.draw do
   end
   match '/my_cars', :to => 'cars#index'
 
+  resources :maps
+
   root to: "home#index"
 
   # The priority is based upon order of creation:

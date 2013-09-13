@@ -1,0 +1,9 @@
+%p
+  = "Name: #{map.name}"
+%p
+  = "Description: #{map.description}"
+%p
+  = "Level required: #{map.required}"
+- unless controller.action_name == 'show'
+  %p
+    = link_to "Go to map", map_path(map)

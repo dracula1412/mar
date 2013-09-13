@@ -1,0 +1,25 @@
+id,name,description,required
+1,Level 1A,basic level,1
+2,Level 1B,advand level,1
+3,Level 2A,basic level,2
+4,Level 2B,advand level,2
+5,Level 3A,basic level,3
+6,Level 3B,advand level,3
+7,Level 4A,basic level,4
+8,Level 4B,advand level,4
+9,Level 5A,basic level,5
+10,Level 5B,advand level,5
+11,Level 6A,basic level,6
+12,Level 6B,advand level,6
+13,Level 7A,basic level,7
+14,Level 7B,advand level,7
+15,Level 8A,basic level,8
+16,Level 8B,advand level,8
+17,Level 9A,basic level,9
+18,Level 9B,advand level,9
+19,Level 10,expert level,10
+20,Level 11,expert level,11
+21,Level 12,expert level,12
+22,Level 13,expert level,13
+23,Level 14,expert level,14
+24,Level 15,expert level,15
