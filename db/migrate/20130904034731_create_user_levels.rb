@@ -1,5 +1,5 @@
 class CreateUserLevels < ActiveRecord::Migration
-  def up
+  def change 
     create_table :user_levels do |t|
       t.string :description
 
