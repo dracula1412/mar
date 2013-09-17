@@ -22,3 +22,26 @@ CSV.foreach(Rails.root.join("db/seeds/maps.csv"), headers: true) do |row|
     ul.required = row[3]
   end
 end
+
+puts "Importing master ways..."
+MasterWay.delete_all
+CSV.foreach(Rails.root.join("db/seeds/master_ways.csv"), headers: true) do |row|
+  MasterWay.create! do |ul|
+    ul.id = row[0]
+    ul.title = row[1]
+    ul.description = row[2]
+    ul.speed_up = row[3]
+    ul.speed_bonus = row[4]
+  end
+end
+
+puts "Importing ways..."
+Way.delete_all
+CSV.foreach(Rails.root.join("db/seeds/ways.csv"), headers: true) do |row|
+  Way.create! do |ul|
+    ul.id = row[0]
+    ul.mini_map_id = row[1]
+    ul.master_way_id = row[2]
+    ul.distance = row[3]
+  end
+end

@@ -1,1 +1,4 @@
 = render :partial => 'map', :locals => { :map => @map }
+%p
+  About this way
+= render :partial => 'shared/way', :collection => @ways, :as => :way 

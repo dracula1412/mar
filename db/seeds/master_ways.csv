@@ -1,0 +1,5 @@
+id,title,description,speed_up,speed_bonus
+1,highway,"maximun speed, increment normal speed",110,5
+2,terrain,maximun speed,105,0
+3,rough,speed slow down,95,-5
+4,wet,speed slow down,80,-10

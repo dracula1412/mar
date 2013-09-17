@@ -7,5 +7,6 @@ class MapsController < ApplicationController
 
   def show
     @map = MiniMap.find(params[:id])
+    @ways = @map.ways
   end
 end
