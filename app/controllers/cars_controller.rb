@@ -44,6 +44,18 @@ class CarsController < ApplicationController
     redirect_to car_path(@car), notice: flash
   end
 
+  def race
+    map = MiniMap.find(params[:map_id])
+    now = Time.now
+    if (@car.class == Car::Worker) || (@car.ended_at && @car.ended_at > now)
+      flash = "Can not go to race"
+    else
+      # TODO: make spec for racing
+      flash = "The car is racing now"
+    end
+    redirect_to map_path(map), notice: flash
+  end
+
   private
   def get_car
     @car = Car.find(params[:id])

@@ -8,5 +8,6 @@ class MapsController < ApplicationController
   def show
     @map = MiniMap.find(params[:id])
     @ways = @map.ways
+    @cars = current_user.normal_cars
   end
 end

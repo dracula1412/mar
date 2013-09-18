@@ -9,6 +9,7 @@ Mar::Application.routes.draw do
     member do
       post :go_to_work
       post :speed_up_worker
+      post :race
     end
   end
   match '/my_cars', :to => 'cars#index'
