@@ -12,46 +12,36 @@ class CarsController < ApplicationController
   end
 
   def go_to_work
-    now = Time.now
-    if (@car.class != Car::Worker) || (@car.ended_at && @car.ended_at > now)
+    if (@car.class != Car::Worker) || @car.working?
       flash = "This car can't go to work"
     else
-      @car.started_at = now
-      @car.ended_at = now + Settings.time_to_work.minutes
-      if @car.save!
-        flash = "This car is going to work !!"
-        @car.user.increment!(:fuel,Settings.default_fuel)
-      else
-        flash = "This car can't go to work"
-      end
+      flash = @car.working![1]
     end
     redirect_to car_path(@car), notice: flash
   end
 
   def speed_up_worker
     now = Time.now
-    if (@car.class != Car::Worker) || (@car.ended_at && @car.ended_at < now) || (@car.user.doraemon < Settings.default_speed_up)
-      flash = "Can not speed up"
+    if (@car.class != Car::Worker) || !@car.working? || !@car.enough_doraemon?
+      flash = if !@car.enough_doraemon?
+                "Not enough doraemon"
+              else
+                "Can not speed up"
+              end
     else
-      @car.ended_at = now
-      if @car.save!
-        flash = "Speed up. This car'll become rest."
-        @car.user.decrement!(:doraemon,Settings.default_speed_up)
-      else
-        flash = "Can not speed up"
-      end
+      flash = @car.speed_up![1]
     end
     redirect_to car_path(@car), notice: flash
   end
 
   def race
-    map = MiniMap.find(params[:map_id])
+    map = MiniMap.find(session[:map_id])
     now = Time.now
-    if (@car.class == Car::Worker) || (@car.ended_at && @car.ended_at > now)
+    session.delete(:map_id)
+    if (@car.class == Car::Worker) || @car.working?
       flash = "Can not go to race"
     else
-      # TODO: make spec for racing
-      flash = "The car is racing now"
+      flash = @car.race![1]
     end
     redirect_to map_path(map), notice: flash
   end
