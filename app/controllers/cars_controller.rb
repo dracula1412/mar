@@ -41,7 +41,7 @@ class CarsController < ApplicationController
     if (@car.class == Car::Worker) || @car.working?
       flash = "Can not go to race"
     else
-      flash = @car.race![1]
+      flash = @car.race!(map)[1]
     end
     redirect_to map_path(map), notice: flash
   end

@@ -1,4 +1,6 @@
 level_max: 15
 time_to_work: 20
+time_to_race: 20
 default_fuel: 100
+default_race_cost: 20
 default_speed_up: 5

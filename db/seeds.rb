@@ -20,6 +20,7 @@ CSV.foreach(Rails.root.join("db/seeds/maps.csv"), headers: true) do |row|
     ul.name = row[1]
     ul.description = row[2]
     ul.required = row[3]
+    ul.gold = row[4]
   end
 end
 
