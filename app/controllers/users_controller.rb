@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @next_level = UserLevel.find(@user.level+1)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,8 +88,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     redirect_to current_user if current_user != @user
     if @user.level < Settings.level_max 
-      @user.level += 1
-      flash = @user.save! ? 'Congratulation, Level Up !!' : 'Error !!'
+      flash = @user.level_up!
     else
       flash = 'Sorry, you are max level.'
     end

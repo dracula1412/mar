@@ -18,5 +18,25 @@
   = @user.doraemon
 
 %p
-  - if my_user && @user.level < Settings.level_max 
-    = link_to 'Level Up', user_level_up_path(@user), method: :post
+  - if my_user && @user.level < Settings.level_max
+    %p
+      %b Next level: 
+      = @next_level.id
+    %p
+      %b Gold require:
+      = @next_level.gold || 0
+      %br
+      - if @user.gold > @next_level.gold
+        = "        (OK)"
+      - else
+        = "        need #{@next_level.gold - @user.gold } gold"
+    %p
+      %b Doraemon require:
+      = @next_level.doraemon || 0
+      %br
+      - if @user.doraemon > @next_level.doraemon
+        = "        (OK)"
+      - else
+        = "         need #{@next_level.doraemon - @user.doraemon} doraemon   "
+    - if @user.level_up?
+      = link_to 'Level Up', user_level_up_path(@user), method: :post

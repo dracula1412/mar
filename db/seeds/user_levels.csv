@@ -1,16 +1,16 @@
-id,description
-1,Level 1
-2,Level 2
-3,Level 3
-4,Level 4
-5,Level 5
-6,Level 6
-7,Level 7
-8,Level 8
-9,Level 9
-10,Level 10
-11,Level 11
-12,Level 12
-13,Level 13
-14,Level 14
-15,Level 15
+id,description,gold,doraemon
+1,Level 1,5000,0
+2,Level 2,10000,0
+3,Level 3,15000,0
+4,Level 4,20000,0
+5,Level 5,25000,0
+6,Level 6,30000,50
+7,Level 7,35000,100
+8,Level 8,40000,150
+9,Level 9,45000,200
+10,Level 10,50000,300
+11,Level 11,55000,400
+12,Level 12,60000,500
+13,Level 13,65000,650
+14,Level 14,70000,800
+15,Level 15,75000,1000

@@ -9,6 +9,8 @@ CSV.foreach(Rails.root.join("db/seeds/user_levels.csv"), headers: true) do |row|
   UserLevel.create! do |ul|
     ul.id = row[0]
     ul.description = row[1]
+    ul.gold = row[2]
+    ul.doraemon = row[3]
   end
 end
 
