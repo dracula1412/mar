@@ -1,18 +1,25 @@
 - type = car.type.split(':').last.downcase
-- if car.ended_at && car.ended_at > Time.now
+- if car.working?
   %p
     = link_to "Car #{car.id}", car_path(car)
     is working !!
     %br
     = "Time to done: #{time_ago_in_words(car.ended_at)}"
     %br
-    = link_to "Speed up", speed_up_worker_car_path(car), method: :post
+    %p 
+      Doraemon require to speed up required
+      = car.doraemon_require
+    - if car.enough_doraemon? 
+      %p
+        = link_to "Speed up", speed_up_worker_car_path(car), method: :post
 - else
   %p
     = link_to "Car #{car.id}", car_path(car)
     is rest.
     %br
     - if type == 'worker'
-      = link_to "Go to work", go_to_work_car_path(car), method: :post 
+      = form_tag(go_to_work_car_path(car), method: :post) do 
+        = select_tag "time", options_for_select(Settings.time_to_work.to_hash.keys.map(&:to_s).map(&:to_i))
+        = submit_tag "go to work"
     - else
       = link_to "Go to race", maps_path 

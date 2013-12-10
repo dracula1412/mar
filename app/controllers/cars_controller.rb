@@ -15,7 +15,7 @@ class CarsController < ApplicationController
     if (@car.class != Car::Worker) || @car.working?
       flash = "This car can't go to work"
     else
-      flash = @car.working![1]
+      flash = @car.working!(params[:time].to_i)[1]
     end
     redirect_to car_path(@car), notice: flash
   end

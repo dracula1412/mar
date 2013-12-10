@@ -1,5 +1,5 @@
 level_max: 15
-time_to_work: 20
+time_to_work: { "20": 120,"120": 660,"480": 2400 }
 time_to_race: 20
 default_fuel: 100
 default_race_cost: 20
