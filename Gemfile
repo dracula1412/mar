@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
+
+# Deploy to heroku
+gem "heroku"
 
 # Debugger
 gem 'pry'

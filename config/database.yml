@@ -13,12 +13,20 @@
 # gem 'pg'
 #
 development:
+# adapter: postgresql
+# encoding: unicode
+# database: mar_development
+# username: hungkm 
+# password: n0
+# pool: 5
   adapter: postgresql
   encoding: unicode
-  database: mar_development
-  username: hungkm 
-  password: n0
   pool: 5
+  database: d29hgvbmhu880l
+  username: lwasdqxawwzhsv
+  password: Hra64FHNYtolvO1aFyYH1crueT
+  host: ec2-54-204-43-139.compute-1.amazonaws.com
+  port: 5432
 # database: p_development
 # username: ltt 
 # password: 123
@@ -54,8 +62,16 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: mar_development
-  #database: p1_development
   pool: 5
-  username: hungkm
-  password: n0
+  database: d29hgvbmhu880l
+  username: lwasdqxawwzhsv
+  password: Hra64FHNYtolvO1aFyYH1crueT
+  host: ec2-54-204-43-139.compute-1.amazonaws.com
+  port: 5432
+# adapter: postgresql
+# encoding: unicode
+# database: mar_development
+# #database: p1_development
+# pool: 5
+# username: hungkm
+# password: n0
