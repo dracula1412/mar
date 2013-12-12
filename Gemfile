@@ -1,8 +1,11 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
+
 ruby '1.9.3'
+gem 'rails', '3.2.13'
 
 # Deploy to heroku
 gem "heroku"
+gem 'rails_12factor', group: :production
 
 # Debugger
 gem 'pry'
@@ -10,7 +13,6 @@ gem 'pry'
 # Config
 gem 'rails_config'
 
-gem 'rails', '3.2.13'
 gem 'therubyracer'
 gem 'pg'
 gem "devise"
